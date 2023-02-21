@@ -1,0 +1,34 @@
+import pafy
+
+video_url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+video = pafy.new(video_url)
+print("Title:", video.title)
+print("Duration:", video.duration)
+import vlc
+
+instance = vlc.Instance()
+player = instance.media_player_new()
+media = instance.media_new(video_url)
+player.set_media(media)
+player.play()
+while True:
+    state = player.get_state()
+    if state == vlc.State.Ended:
+        break
+import pafy
+import vlc
+
+video_url = input("Enter a YouTube video URL: ")
+video = pafy.new(video_url)
+print("Playing:", video.title)
+
+instance = vlc.Instance()
+player = instance.media_player_new()
+media = instance.media_new(video_url)
+player.set_media(media)
+player.play()
+
+while True:
+    state = player.get_state()
+    if state == vlc.State.Ended:
+        break
